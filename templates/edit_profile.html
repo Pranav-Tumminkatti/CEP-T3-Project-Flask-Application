@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author" content="Pranav Tumminkatti">
+	<meta name="description" content="A blogsite">
+	<meta name="robots" content="all">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <title>Edit Profile</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        .body-bg {
+            background: linear-gradient(90deg, #d53369 0%, #daae51 100%);
+        }
+    </style>
+</head>
+<body class="body-bg min-h-screen pt-12 md:pt-20 pb-6 px-1 md:px-0" style="font-family:'Lato',sans-serif;">
+    <header class="max-w-lg mx-auto">
+        <a href="#">
+            <h1 class="text-4xl font-bold text-white text-center">Unveiled</h1>
+        </a>
+    </header>
+
+    <main class="bg-white max-w-lg mx-auto p-6 md:p-12 my-8 rounded-lg shadow-2xl">
+        <section>
+            <h3 class="font-bold text-2xl">Welcome to Unveiled</h3>
+            <p class="text-gray-600 pt-2">Edit your profile.</p>
+        </section>
+
+        <section class="mt-10">
+            <form class="flex flex-col" method="POST"> 
+                <div class="mb-6 pt-3 rounded bg-gray-200">
+                    <label class="block text-gray-700 text-sm font-bold mb-2 ml-3" for="category">Name</label>
+                    <input type="text" id="name" name='name' value="{{ name }}" required maxlength='100' class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3">
+                    <!--values for all inputs are predefined and the first unedited data in profile_data.json is directly passed to the form to be displayed in the input fields. This allows the content to be edited and not re-written.-->
+                </div>
+                <div class="mb-6 pt-3 rounded bg-gray-200">
+                    <label class="block text-gray-700 text-sm font-bold mb-2 ml-3" for="title">Job</label>
+                    <input type="text" id="job" name='job' value="{{ job }}" required maxlength='100' class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3">
+                </div>
+                <div class="mb-6 pt-3 rounded bg-gray-200">
+                    <label class="block text-gray-700 text-sm font-bold mb-2 ml-3" for="title">Location</label>
+                    <input type="text" id="location" name='location' value="{{ location }}" required maxlength='200' class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3">
+                </div>
+                <div class="mb-6 pt-3 rounded bg-gray-200">
+                    <label class="block text-gray-700 text-sm font-bold mb-2 ml-3" for="content">Description</label>
+                    <textarea type="text" id="description" name='description' required maxlength='500' class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-40">{{ description }}</textarea>
+                </div>
+                <button class="bg-purple-600 hover:bg-purple-700 w-full text-base text-white font-bold py-2 rounded shadow-lg hover:shadow-xl transition duration-200" type="submit">Upload</button>
+            </form>
+        </section>
+    </main>
+
+    <footer class="max-w-lg mx-auto flex justify-center text-white">
+        <a href="/about_us" class="hover:underline">About Us</a>
+        <span class="mx-3">•</span>
+        <a href="/contact_us" class="hover:underline">Contact Us</a>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author" content="Pranav Tumminkatti">
+	<meta name="description" content="A blogsite">
+	<meta name="robots" content="all">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <title>Edit {{ blog['title'] }}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        .body-bg {
+            background: linear-gradient(90deg, #d53369 0%, #daae51 100%);
+        }
+    </style>
+</head>
+<body class="body-bg min-h-screen pt-12 md:pt-20 pb-6 px-1 md:px-0" style="font-family:'Lato',sans-serif;">
+    <header class="max-w-lg mx-auto">
+        <a href="#">
+            <h1 class="text-4xl font-bold text-white text-center">Unveiled</h1>
+        </a>
+    </header>
+
+    <main class="bg-white max-w-lg mx-auto p-6 md:p-12 my-8 rounded-lg shadow-2xl">
+        <section>
+            <h3 class="font-bold text-2xl">Welcome to Unveiled</h3>
+            <p class="text-gray-600 pt-2">Edit "{{ blog['title'] }}".</p>
+        </section>
+
+        <section class="mt-10">
+            <form class="flex flex-col" method="POST"> 
+                <div class="mb-6 pt-3 rounded bg-gray-200">
+                    <label class="block text-gray-700 text-sm font-bold mb-2 ml-3" for="category">Category</label>
+                    <input type="text" id="category" name='category' value="{{  blog['category']  }}" required maxlength='50' class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3">
+                    <!--values for all inputs are predefined and the first unedited data in blog_data.json is directly passed to the form to be displayed in the input fields. This allows the content to be edited and not re-written.-->
+                </div>
+                <div class="mb-6 pt-3 rounded bg-gray-200">
+                    <label class="block text-gray-700 text-sm font-bold mb-2 ml-3" for="title">Title</label>
+                    <input type="text" id="title" name='title' value="{{  blog['title']  }}" required maxlength='100' class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3">
+                </div>
+                <div class="mb-6 pt-3 rounded bg-gray-200">
+                    <label class="block text-gray-700 text-sm font-bold mb-2 ml-3" for="content">Content</label>
+                    <textarea type="text" id="content" name='content' required class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-40">{{ blog['content'] }}</textarea>
+                </div>
+                <div class="mb-6 pt-3 rounded bg-gray-200">
+                    <label class="block text-gray-700 text-sm font-bold mb-2 ml-3" for="synopsis">Synopsis</label>
+                    <input type="text" id="synopsis" name='synopsis' value="{{  blog['synopsis']  }}" required maxlength='100' class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3">
+                </div>
+                <button class="bg-purple-600 hover:bg-purple-700 w-full text-base text-white font-bold py-2 rounded shadow-lg hover:shadow-xl transition duration-200" type="submit">Upload</button>
+            </form>
+            <div class="flex justify-end"> 
+                <form action="{{ url_for('delete_post', id=blog['id']) }}" method='POST'>   <!--form imput to delete the post, sends over the id that it received from the edit_post route to the delete_post route-->
+                    <input type='submit' value='Delete this post -->' onclick="return confirm('Are you sure you want to delete this post?')" class="text-base bg-transparent mt-4 mb-0 text-purple-900 hover:text-purple-700 hover:underline mb-6">
+                                                                      <!--conformation message-->
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="max-w-lg mx-auto flex justify-center text-white">
+        <a href="/your_blogs" class="hover:underline">Blogs</a>
+        <span class="mx-3">•</span>
+        <a href="/contact_us" class="hover:underline">Contact Us</a>
+    </footer>
+</body>
+</html>

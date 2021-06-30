@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %} Contact Us {% endblock %}
+{% block body %} 
+<section class="text-gray-600 body-font">
+    <div class="container px-5 py-24 mx-auto">
+      <div class="lg:w-2/3 flex flex-col sm:flex-row sm:items-center items-center mx-auto">
+        {% if not form %}
+        <p class="flex-grow sm:pr-16 text-xl font-medium title-font text-gray-800">No data available yet!</p>
+        {% else %}
+        <table class='relative w-full border overflow-auto mr-12'>
+            <caption>Newsletter subscription form data-entry table</caption>
+            <tr>
+                <th class="sticky top-0 px-6 py-3 text-red-900 bg-red-300">Email</th>
+            </tr>
+            {% for i in form %}
+                <tr class="divide-y bg-red-100 hover:bg-red-200">
+                    <td class="px-6 py-4 text-center">{{i}}</td>
+                </tr>
+            {% endfor %}
+        {% endif %}
+        </table>
+        <a href='/' class="flex-shrink-0 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg mt-10 mr-2 sm:mt-0">Back to Home</a>
+    </div>
+    </div>
+  </section>
+{% endblock %}
